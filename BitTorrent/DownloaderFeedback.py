@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,14 @@
 # License.
 
 # Written by Bram Cohen
-
+'''
+@note: 
+下载任务状态信息搜集器。定义于BitTorrent/DownloaderFeedback.py中，
+它提供了搜集下载任务的状态信息的接口，可以完成状态信息的搜集以显示给用户。
+图形界面程序或者其它的界面程序在调用_SingleTorrent的搜集信息函数时，
+最终还是要和该对象打交道(可以参阅_SingleTorrent.get_status函数的实现)。
+与_SingleTorrent一一对应。
+'''
 from __future__ import division
 
 from time import time

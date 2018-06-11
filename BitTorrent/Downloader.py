@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,12 @@
 # License.
 
 # Written by Bram Cohen
-
+'''
+@note: 
+下载工作管理器。定义于BitTorrent/Downloader.py中，
+管理该种子任务中的所有下载工作。因为一个种子文件的下载过程中要和很多个对等客户打交道，
+因此需要建立若干个连接。与_SingleTorrent一一对应。 
+'''
 from random import shuffle
 from time import time
 

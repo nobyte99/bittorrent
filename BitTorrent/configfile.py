@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,6 +10,9 @@
 # License.
 
 # Written by Uoti Urpala
+"""
+@note: 配置文件功能，用来读取配置文件
+"""
 
 import os
 import sys

@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,18 @@
 # License.
 
 # Written by Uoti Urpala
-
+'''
+@note: 
+BitTorrent/TorrentQueue.py模块完成了从GUI界面到实际的种子下载任务的模块中的衔接。
+它实现了Feedback的接口，这样当某个种子的下载任务发生变化(如完成，出错等)后，可以及时得通知
+它，然后显示在GUI界面上。通过分析其它的BT的下载程序(即非图形界面的下载程序，
+如btdownloadheadless.py等)，也可以看到有一个继承了Feedback接口的类，但是它的实现
+方式通常是以文字的形式表现出种子的变化。另外，TorrentQueue模块还可以恢复上次的下载情况
+(读取一些状态文件)，通过所有的下载程序的分析(图形界面的或者文本的)我们可以认为，实际执行下
+载任务的对象是BitTorrent/download.py中的Multitorrent对象为。而TorrentQueue的
+代码仍然算在GUI部分中，通过分析它的代码，我们已经知道它已经读取了相应的种子文件中的信息，并
+且进行了相关的处理。 
+'''
 from __future__ import division
 
 import os

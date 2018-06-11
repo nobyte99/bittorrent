@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,6 +10,19 @@
 # License.
 
 # Written by Bram Cohen
+'''
+@note: 
+定义在BitTorrent/HTTPHandler.py中，这个对象的初始化函数很简单，
+只是把Tracker.get函数赋值到自己的一个内部变量备用。当有外部网络连接到达时，
+根据前面对RawServer的分析，我们知道，HTTPHandler.external_connection_made函数
+会被调用，它维护了自己内部的一个字典connections，以传进来的参数connection(
+它的类型是SingleSocket)为关键字，值为一个新建立的HTTPConnection，新建立
+的 HTTPConnection也主要是进行一些值的初始化，另外注意这句：
+
+    self.next_func = self.read_type
+
+    这个变量被指向自己的一个函数，后面我们还会看到，它还会发生变化，以灵活处理数据的不同部分。
+'''
 
 from cStringIO import StringIO
 from sys import stdout

@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,6 +10,12 @@
 # License.
 
 # Written by Bram Cohen
+'''
+@note: 
+速度测量器。定义于BitTorrent/RateMeasure.py中，和Measure不一样的地方在于
+它可以在初始化的时候传入一个表示还剩多少字节的参数进去，因而它多了一个功能，那就是
+根据当前的速率，估算出预计剩余时间。_SingleTorrent中定义了一个RateMeasure。 
+'''
 
 from time import time
 

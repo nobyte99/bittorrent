@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,6 +10,13 @@
 # License.
 
 # Written by Bram Cohen and Uoti Urpala
+'''
+@note: 
+单一下载。
+定义于BitTorrent/Downloader.py中，对应一个连接中的下载。
+它与Connection 一一对应，且由Downloader对象产生(Downloader.make_download)，
+每次新的连接建立时，Encoder都会把这个连接保存起来，并且产生一个SingleDownload对象。 
+'''
 
 from __future__ import division
 # required for python 2.2

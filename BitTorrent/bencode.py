@@ -1,3 +1,4 @@
+# coding:utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,6 +10,8 @@
 # License.
 
 # Written by Petru Paler
+
+# �����˼����������͵��ַ������͵ķ�װ�ͽ����� int,string, list, dict
 
 from BitTorrent.obsoletepythonsupport import *
 
@@ -44,6 +47,7 @@ def decode_dict(x, f):
     r, f = {}, f+1
     lastkey = None
     while x[f] != 'e':
+        print(r)
         k, f = decode_string(x, f)
         if lastkey >= k:
             raise ValueError
@@ -51,6 +55,7 @@ def decode_dict(x, f):
         r[k], f = decode_func[x[f]](x, f)
     return (r, f + 1)
 
+# ���ض����ַ�����ʽ����Ϊint�� string, list, dict
 decode_func = {}
 decode_func['l'] = decode_list
 decode_func['d'] = decode_dict
@@ -65,6 +70,7 @@ decode_func['6'] = decode_string
 decode_func['7'] = decode_string
 decode_func['8'] = decode_string
 decode_func['9'] = decode_string
+
 
 def bdecode(x):
     try:
@@ -84,6 +90,7 @@ class Bencached(object):
 
     def __init__(self, s):
         self.bencoded = s
+
 
 def encode_bencached(x,r):
     r.append(x.bencoded)
@@ -109,6 +116,7 @@ def encode_dict(x,r):
         encode_func[type(v)](v, r)
     r.append('e')
 
+# ��int�� string, list, dict��װΪ�ض����ַ�����ʽ
 encode_func = {}
 encode_func[Bencached] = encode_bencached
 encode_func[IntType] = encode_int
@@ -128,3 +136,4 @@ def bencode(x):
     r = []
     encode_func[type(x)](x, r)
     return ''.join(r)
+

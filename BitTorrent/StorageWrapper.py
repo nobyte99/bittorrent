@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,15 @@
 # License.
 
 # Written by Bram Cohen
-
+'''
+@note: 
+储存管理类。定义于BitTorrent/Storage.py和StorageWrapper.py 中，
+它们的作用是对程序的其它部分屏蔽掉种子文件中第几块对应于实际硬盘上的哪个文件的偏移量多少。
+即它对程序的其它部分提供诸如以下的这些服务，确定现在本地有第几块，没有第几块；应其它部分要求读
+出第几块(其它程序就不用管第几块实际上是硬盘上的那个文件)，然后它们好发送到网络上；其它部分从
+网络上得到一块新的数据，叫它存储到硬盘上。Storage和StorageWrapper都和_SingleTorrent
+一一对应。 
+'''
 from __future__ import division
 
 from sha import sha

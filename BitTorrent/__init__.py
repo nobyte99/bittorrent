@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -21,6 +22,9 @@ def calc_unix_dirs():
     dp = os.path.join('share', 'doc'    , appdir)
     return ip, dp
 
+
+# 生成 app_root, image_root, doc_root等的合适路径
+
 app_root = os.path.split(os.path.abspath(sys.argv[0]))[0]
 image_root = os.path.join(app_root, 'images')
 doc_root = app_root
@@ -33,6 +37,8 @@ if app_root.startswith(os.path.join(sys.prefix,'bin')):
 # hackery to get around bug in py2exe that tries to write log files to
 # application directories, which may not be writable by non-admin users
 if os.name == 'nt' and hasattr(sys, 'frozen') and sys.frozen == 'windows_exe':
+    
+    # 如何更改并重定义标准模块中的类
     baseclass = sys.stderr.__class__
     class Stderr(baseclass):
         logpath = os.path.join(os.path.expanduser('~'),
@@ -41,16 +47,19 @@ if os.name == 'nt' and hasattr(sys, 'frozen') and sys.frozen == 'windows_exe':
                                                )[0] + '_errors.log')
         def write(self, text, alert=None, fname=logpath):
             baseclass.write(self, text, fname=fname)
-    sys.stderr = Stderr()
+    sys.stderr = Stderr()  # sys.stderr仅仅是file的一个实例
 
 
+# 去掉import的模块
 del sys
 
 
+# log level
 INFO = 0
 WARNING = 1
 ERROR = 2
 CRITICAL = 3
 
+# 一个失败类
 class BTFailure(Exception):
     pass

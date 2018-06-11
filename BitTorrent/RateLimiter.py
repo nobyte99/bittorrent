@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,16 @@
 # License.
 
 # Written by Uoti Urpala
-
+'''
+@note: 
+在Multitorrent中定义，作用是对全局的速度进行限制。由于BT通信协议中，
+只有发送实际的数据会需要比较多的带宽，因而也只有在这种情况下会需要用RateLimiter来
+对其进行限制。现在我们可以注意到在每个Connection中还有一个next_upload 变量，
+它在其它地方都没有用到，仅仅是在这里，它的作用就是把若干个连接通过这种方式组成一个链表。
+next_upload的类型是 Connection，不是Upload，这里要注意。我们看
+到RateLimiter.queue函数中进行的就是数据结构中很常见的链表操作，其中 self.last指向
+了上一个Connection对象，插入新的Connection对象时，last会指向它。
+'''
 from time import time
 
 class RateLimiter(object):

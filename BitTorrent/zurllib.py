@@ -1,3 +1,4 @@
+# coding: utf-8
 #
 # zurllib.py
 #
@@ -7,7 +8,12 @@
 #
 # by Robert Stone 2/22/2003 
 #
-
+'''
+@note: 
+Request是zurllib中的模块，可以很轻松地发送一个http请求，然后获取返回的信息。
+根据是否出错来决定调用_postrequest的情况。这里出错仅仅是http请求本身发生错误，
+如网络问题等，跟踪服务器也可能会返回一些其它的错误信息，我们可以在_postrequest中看到。 
+'''
 from urllib import *
 from urllib2 import *
 from gzip import GzipFile

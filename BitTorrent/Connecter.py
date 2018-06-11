@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,12 @@
 # License.
 
 # Originally written by Bram Cohen, heavily modified by Uoti Urpala
-
+"""
+@note: 
+    Connection：连接。定义于BitTorrent/Connecter.py中，
+        一个该对象对应于一个连接。因此一个_SingleTorrent中包含了
+        若干个Connection对象(由Encoder负责统一管理)
+"""
 # required for python 2.2
 from __future__ import generators
 

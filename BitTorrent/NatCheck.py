@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,11 @@
 # License.
 
 # Written by Bram Cohen
-
+'''
+@note: 
+有一个NAT处理的类，定义在BitTorrent/NatCheck.py中，它通过往用户
+声称的 IP和端口进行一次连接，看看有没有反应，以确认NAT情况，并且记录下来
+'''
 from cStringIO import StringIO
 from socket import error as socketerror
 

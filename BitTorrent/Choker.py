@@ -1,3 +1,4 @@
+# coding:utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,6 +10,11 @@
 # License.
 
 # Written by Bram Cohen
+"""
+@note:  Choker：阻塞管理类。
+它的作用是确定上传的阻塞策略，即当前的连接中，阻塞哪些连接。与 _SingleTorrent 一一对应。 
+"""
+
 
 from random import randrange
 

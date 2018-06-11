@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,11 @@
 # License.
 
 # Written by Bram Cohen
-
+'''
+@note: 
+块选取器。定义于BitTorrent/PiecePicker.py中，进行“下一块下载哪块”这件事情的决策工作，
+与_SingleTorrent一一对应。 
+'''
 from random import randrange, shuffle, choice
 
 

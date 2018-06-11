@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -11,7 +10,34 @@
 # License.
 
 # Written by Bram Cohen
+'''
+@note: 
+BitTorrent/makemetafile.py模块中提供函数make_meta_files。它的参数意义如下： 
 
+    URL：Tracker的URL地址，在BT的协议设计中，还是需要有个服务器作为tracker来协调各个客户端的下载的，tracker部分的程序以后会介绍，现在只需要知道这个URL将要作为一条信息写入到种子文件中即可。 
+
+    file：种子文件的来源文件或目录列表(即准备要在BT上共享的资源)，注意，这里的列表意思是该列表中的每一项都为其生成一个种子文件，而此列表中的每一项可以是一个文件或者是一个目录。 
+
+    flag：一个Event对象，可以用来检查是否用户要求中止程序。程序设计得比较合理，可以在很细的粒度下检查这个Event是否被触发，如果是则中止执行。 
+
+    progressfunc：一个回调函数，程序会在恰当的地方调用它，以表示现在的工作进度，在命令行模式下，这个回调函数被指向在控制台上显示进度信息的函数，在GUI模式下，这个回调函数则会影响一个图形界面的进度条。 
+
+    filefunc：也是一个回调函数，程序会在恰当的地方调用它，以表示现在在处理哪个文件。 
+
+    piece_len_pow2：分块的大小，BT中把要共享的资源分成固定大小的块，以便处理。这个参数就是用2的指数表示的块的大小，例如当该参数为19的情况下，则表示共享的资源将被分成512k大小的块为单位进行处理。 
+
+    target：目标文件地址，即种子文件的地址。这个参数可以不指定(None)，则种子文件将与公享资源处于同一目录。 
+
+    comment：说明。一段可以附加在种子文件内的信息。 
+
+    filesystem_encoding：文件系统编码信息。 
+
+    make_meta_files的主要工作是进行一系列的检查。例如在开始的时候就检查files的长度(
+    元素的个数)和target，当files的长度大于1且target不是None的时候就会报错，
+    因为如果要生成多个种子文件的话，是不能指定target的(这样target只确定了一个种子文件
+    的保存位置)。接下来检查文件系统的编码问题。然后把files中所有以.torrent结尾的项目全
+    部刨掉，剩下的作为参数传递给 make_meta_file进行处理，注意，这个函数一次生成一个种子文件。 
+'''
 from __future__ import division
 
 import os

@@ -1,3 +1,4 @@
+# coding:utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,6 +10,16 @@
 # License.
 
 # Written by Bram Cohen, Uoti Urpala, and John Hoffman
+
+"""
+Bitfield：位图对象。定义于BitTorrent/bitfield.py中，用来表示一个比特数组。它典型用途是表示当前的种子文件的
+下载过程中，本地有第几块，没有第几块。出现在两个地方，StorageWrapper，储存本地的块拥有情况信息，
+以及SingleDownload中，储存别人的块拥有情况信息(以方便决定以后是不是要从他那里下载)。 
+
+@see: StorageWrapper, SingleDownload
+"""
+
+
 
 try:
     sum([1])

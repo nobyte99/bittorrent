@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,10 @@
 # License.
 
 # Written by Bill Bumgarner and Bram Cohen
-
+'''
+@note: 
+args参数处理功能
+'''
 import sys
 from types import *
 from cStringIO import StringIO

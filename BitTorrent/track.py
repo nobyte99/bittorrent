@@ -1,3 +1,4 @@
+# coding: utf-8
 # The contents of this file are subject to the BitTorrent Open Source License
 # Version 1.0 (the License).  You may not copy or use this file, in either
 # source code or executable form, except in compliance with the License.  You
@@ -9,7 +10,15 @@
 # License.
 
 # Written by Bram Cohen and John Hoffman
+'''
+@note: 
+跟踪服务器的代码实现在BitTorrent/track.py中，在bttrack.py中只是很简单得一行：
 
+    track(argv[1:]) 
+
+    这样就把参数传到track.py的track函数。track函数本身也比较简单，处理参数和相关的配置文件
+    ，建立一个RawServer，然后用 create_serversocket创建服务器套接字，然后开始服务.
+'''
 import sys
 import os
 import signal
